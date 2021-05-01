@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+</head>
+	<body>
+		<div class="encloser">
+			<div class="left">
+				<a href="{% url 'home' %}"><span id="logo">Electura</span></a>
+			</div>
+			<div class="right">
+				<span class="nav_item" id='notifications'>
+					{% if notifications %}
+						<span id="new_icon">new</span>
+					{% endif %}
+					<span id="very_special">Notifications <i class='fas fa-caret-down'></i></span>
+					<ul>
+						{% if notifications %}
+							{% for notification in notifications %}
+							<li>{{notification.title}}<span class="read_button" onclick="read(this, '{{notification.id}}')">Read</span></li>
+							{% endfor %}
+						{% else %}
+							<li>There are no new notifications</li>
+						{% endif %}
+					</ul>
+				</span>
+				{% if request.user.user_type == 'C' %}
+					<a href="{% url 'create' %}"><span class="nav_item">Create</span></a>
+				{% endif %}
+				<a href="{% url 'logout' %}"><span class="nav_item">Logout</span></a>
+			</div>
+		</div>
+		<br>
+		<br>
+		<h1 id="main_heading">Welcome {{request.user}}</h1>
+		{% if request.user.user_type == 'C' %}
+			<div class="all_tasks">
+				<div class="pending">
+					<h2>Pending Tasks</h2>
+					{% for task in pending_tasks %}
+						<div class="individual_task">
+							<h3>{{task.name}}<span class="pending_tag">pending</span></h3>
+							<p>{{task.description}}</p>
+							<br>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="completed">
+					<h2>Completed Tasks</h2>
+					{% for task in completed_tasks %}
+						<div class="individual_task">
+							<h3>{{task.name}}<span class="pending_tag">completed</span></h3>
+							<p>{{task.description}}</p>
+							<br>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% else %}
+			<div class="all_tasks">
+				<div class="pending">
+					<h2>Pending Tasks</h2>
+					{% for task in pending_tasks %}
+						<div class="individual_task">
+							<h3>{{task.name}}<span class="pending_tag">pending</span></h3>
+							<p>{{task.description}}</p>
+							<br>
+							<button class="special" onclick="complete('{{task.id}}', '{{task.name}}','{{task.description}}', this)">Mark Completed</button>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="completed">
+					<h2>Completed Tasks</h2>
+					{% for task in completed_tasks %}
+						<div class="individual_task">
+							<h3>{{task.name}}<span class="pending_tag">completed</span></h3>
+							<p>{{task.description}}</p>
+							<br>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+		<script src="{% static 'js/home.js' %}"></script>
+	</body>
+</html>

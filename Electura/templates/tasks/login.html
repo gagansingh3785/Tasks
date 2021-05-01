@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="inner_container">
+				<div id="heading">
+					<div id="main_heading">
+						<i class="fas fa-user"></i>
+					</div>
+				</div>
+				<form action="" method="POST">
+					{% csrf_token %}
+					<div class="form">
+						<div class="form_element">
+							<span class="label"><i class="fas fa-user"></i></span><input type="text" id="username" placeholder="email" name="email" required>
+						</div>
+						<div class="form_element">
+							<span class="label"><i class="fas fa-key"></i></i></span><input type="password" id="password" placeholder="password" name="password" required>
+						</div>
+						<div class="form_element">
+							<button type="submit">Login</button>
+						</div>
+						<div class="form_element">
+							Don't have an account? <a href="{% url 'register' %}">Click here</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

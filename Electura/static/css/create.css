@@ -1,0 +1,20 @@
+
+.form_encloser{
+	margin-top: 100px;
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.input_ele{
+	width: 100%;
+	font-size: 15px;
+}
+button{
+	background-color: grey;
+	padding: 10px 20px 10px 20px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+}

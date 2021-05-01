@@ -1,0 +1,80 @@
+#main_heading{
+	text-align: center;
+	font-family: lobster;
+}
+
+.all_tasks{
+	display: flex;
+	justify-content: space-around;
+}
+
+
+.pending{
+	width: 50%;
+}
+.pending h2{
+	text-align: center;
+}
+.completed{
+	width: 50%;
+}
+.completed h2{
+	text-align: center;
+}
+
+.individual_task{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid grey;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 20px;
+}
+.special{
+	margin-bottom: 20px;
+	background-color: 	#20B2AA;
+	border: none;
+	padding: 10px;
+	color: white;
+	border-radius: 5px;
+}
+
+
+.individual_task p{
+	font-size: 12px;
+}
+.pending_tag{
+	position: relative;
+	top: -10px;
+	left: -10px;
+	font-size: 10px;
+	margin-left: 10px;
+	background-color: #6495ED;
+	padding: 5px;
+	border-radius: 5px;
+	color: white;
+}
+@media screen and (max-width: 800px){
+	.all_tasks{
+		flex-direction: column;
+	}
+	.pending{
+		width: 100%;
+	}
+	.completed{
+		width: 100%;
+	}
+}
+@media screen and (max-device-width: 800px){
+	.all_tasks{
+		flex-direction: column;
+	}
+	.pending{
+		width: 100%;
+	}
+	.completed{
+		width: 100%;
+	}
+}

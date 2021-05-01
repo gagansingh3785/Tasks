@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/navbar.css' %}" type="text/css">
+	</head>
+	<body>
+		<div class="encloser">
+			<div class="left">
+				<a href="{% url 'home' %}"><span id="logo">Electura</span></a>
+			</div>
+			<div class="right">
+				<span class="nav_item">Notifications</span>
+				{% if request.user.user_type == 'C' %}<a href="{% url 'create' %}"><span class="nav_item">Create</span></a>{% endif %}
+				<a href="{% url 'logout' %}"><span class="nav_item">Logout</span></a>
+			</div>
+		</div>
+	</body>
+</html>
